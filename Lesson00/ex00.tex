@@ -170,20 +170,13 @@
 		\item The Java compiler $\texttt{javac}$ compiles the program written in Java into an intermediate bytecode $\mathcal{JVM}$. Such compiler is a function $\texttt{javac}\colon Java\to \mathcal{JVM}$.
 		\item The programs compiled for the $\mathcal{JVM}$ cannot be directly read by the machine $\mathcal{M}$, and hence it requires an interpreter $\mathcal{I}_{\mathcal{M}}^{\mathcal{JVM}}$, called \textbf{Java Virtual Machine} (\texttt{java}).
 		\item The compiled program $\texttt{javacc}(p)$ has to be run with such interpreter:
-		\[\mathcal{I}_{\mathcal{M}}^{\mathcal{JVM}}(\texttt{javac}(p))\]
+		\[\texttt{java}(\texttt{javac}(p))\]
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Programming language: Java (1)}
-	\begin{itemize}
-		\item The Java compiler $\texttt{javac}$ compiles the program written in Java into an intermediate bytecode $\mathcal{JVM}$. Such compiler is a function $\texttt{javac}\colon Java\to \mathcal{JVM}$.
-		\item The programs compiled for the $\mathcal{JVM}$ cannot be directly read by the machine $\mathcal{M}$, and hence it requires an interpreter $\mathcal{I}_{\mathcal{M}}^{\mathcal{JVM}}$, called \textbf{Java Virtual Machine} (\texttt{java}).
-		\item The compiled program $\texttt{javacc}(p)$ has to be run with such interpreter:
-		\[\mathcal{I}_{\mathcal{M}}^{\mathcal{JVM}}(\texttt{javac}(p))\]
-	\end{itemize}
-\end{frame}
 
-\begin{frame}{Programming language: Java (1)}
+
+\begin{frame}{Programming language: Java (2)}
 	\begin{itemize}
 		\item The Java compiler $\texttt{javac}$ has to be invoked on a given source code file:
 		\begin{center}
