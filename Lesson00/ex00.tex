@@ -26,7 +26,7 @@
   	\end{itemize}
   \end{frame}
   
-  \begin{frame}{Exercises 1-6}
+  \begin{frame}{Home Directory (1)}
     \begin{itemize}
     	\item Open the terminal. 
     	\item The terminal starts to work in your home directory, $\sim$, that is \texttt{/home/students/name.surname$k$/}
@@ -36,6 +36,27 @@
     	\item \texttt{\color{green}touch \textbf{\color{red}file}} allows to either create a new file, or to update its ``timestamp''
     \end{itemize}
   \end{frame}
+
+  \begin{frame}{Home Directory (2)}
+  	You must change your directory's permission!
+	\begin{itemize}
+		\item  \texttt{\color{green} chmod} is the command allowing to set a file/folder's permissions.
+		\item  \texttt{\color{green} chmod \color{red} XYZ \color{blue} file} is the usual syntax.
+		\item \texttt{\color{red}XYZ} represents three digits in a octal format. 
+		\begin{enumerate}
+			\item  \texttt{\color{red}X} stands for your permissions
+			\item \texttt{\color{red}Y} stands for the users within your same group (students)
+			\item \texttt{\color{red}Z} stands for all the other users.
+		\end{enumerate}
+		\item For each digit, we can express a combination of the following permissions using the sum as a or operator:
+		\begin{enumerate}
+			\item 1, \textbf{execution} permissions
+			\item 2, \textbf{writing} permissions
+			\item 4, \textbf{reading} permissions
+		\end{enumerate}
+	\item E.g.,\, \texttt{chmod 700 name.surname$k$}
+	\end{itemize}
+\end{frame}
 
 \begin{frame}{Exercises 1}
 \begin{figure}
