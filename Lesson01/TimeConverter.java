@@ -33,6 +33,7 @@ class TimeConverter {
         input = input.replace("m","");
         boolean isSeconds = input.contains("s");
         input = input.replace("s","");
+	double conv1 = (isYear ? 1 : (isDay ? 365 : (isHour ? 365*24 : (isMinute ? 365*24*60 : 365*24*60*60))));
 
         boolean toYear = input.contains("Y");
         input = input.replace("Y","");
@@ -45,27 +46,31 @@ class TimeConverter {
         boolean toSeconds = input.contains("S");
         input = input.replace("S","");
         input = input.trim();
+	double conv2 = toYear ? 1 : (toDay ? 365 : (toHour ? 365*24 : (toMinute ? 365*24*60 : 365*24*60*60)));
 
         int unit1 = isYear ? 4 : (isDay ? 3 : (isHour ? 2 : (isMinute ? 1 : 0)));
         int unit2 = toYear ? 4 : (toDay ? 3 : (toHour ? 2 : (toMinute ? 1 : 0)));
         double value = Double.valueOf(input);
 
-        double toreturn = value;
+        double toreturn = value * conv2 / conv1;
 
-        // Checks if the conversion implies a multiplication (true) or a division (false)
+	/* Advanced
+
+	// Checks if the conversion implies a multiplication (true) or a division (false)
         boolean grow = unit1 > unit2;
         boolean originalGrow = grow;
 
-        // I adjust the "indices" for returning the right conversion for variable conversion
-        while (grow) {
+	// I adjust the "indices" for returning the right conversion for variable conversion
+	//unit1 = grow ? unit1-1 : unit1;
+	//unit2 = grow ? unit2-1 : unit2; 
+	//unit2 = unit2 < 0 ? 0 : unit2;
+        if (grow) {
             unit1--;
             unit2--;
             unit2 = unit2 < 0 ? 0 : unit2;
-            grow = false;
         }
-        grow = originalGrow;
-
-        // See the first lesson, where the iteration was defined by a boolean.
+       
+	// See the first lesson, where the iteration was defined by a boolean.
         // this means iterate the body until the condition stated in the body is met
         while (unit1 != unit2) {
             // Gets the integer to be returned for the conversion
@@ -79,6 +84,7 @@ class TimeConverter {
             // I want to reach the final unit of measurement
             unit1 += (grow ? (-1) : (+1));
         }
+	*/
 
         System.out.println(toreturn);
 
