@@ -1,0 +1,51 @@
+\documentclass[]{scrartcl}
+%opening
+\usepackage{amsmath}
+\title{Lab Lesson 01}
+\date{October 24, 2017}
+\author{Giacomo Bergami}
+\begin{document}
+\maketitle
+\section*{Exercises}
+
+\begin{itemize}
+\item Write two programs, for both bytes and integers, that are affected by a overflow representation.
+\item Write a program that prints the seconds into a human readable format. This means that each second must show the number of years, days, hours, minutes and seconds it corresponds. The following output format must be used:
+\begin{center}
+\texttt{0y 2d 3h 1m 20s}
+\end{center}
+\item A year with 366 days is said to be a leap. Following the adoption of the Gregorian calendar (1582), in order to determine if a year is a leap, you can follow these steps:
+\begin{enumerate}
+\item If the year can be divided by four, see 2) and 5) otherwise
+\item If the year can be divided by one hundred, see 3) and 4) otherwise
+\item If the year can be divided by four hundred, see 4) and 5) otherwise
+\item return \textbf{true}
+\item return \textbf{false}
+\end{enumerate}
+Solve this exercise without using any if-then-else statement.
+
+\item Create a program that takes a string with the following format as an input:
+\begin{center}
+	\texttt{1024356 h S}
+\end{center}
+and converts 1024356 hours (h) into seconds (S). In particular, the source  time unit is in lowercase, and the upper time unit is the target time unit towards which apply the conversion. The strings that can be used to express such time units are the following ones:
+\begin{itemize}
+\item y/Y = Year
+\item d/D = Day
+\item  h/H = Hour
+\item  m/M = Minute
+\item  s/S = Seconds
+\end{itemize}
+Create a program that parses the string and provides the desired time conversion.
+
+\item  Write a program that associates to a pair of integers $(i,j)$ an unique integer 
+$c$, such that $(i,j)\to c$ is a bijection.
+
+In order to do that, we can use the dovetailing function:
+\[c = \frac{(i+j)(i+j+1)}{2} + j\]
+
+Then, we want to make sure that the resulting number is uniquely associated to $(i,j)$. Then, we can ask ourselves if there is an inverse function. Such inverse function is:
+\[i = c - \frac{1}{2}\left(\frac{\sqrt{8c+1}-1}{2} + 1\right) \cdot\left(\frac{\sqrt{8c+1}-1}{2}\right)\]
+\[j = \left(\frac{\sqrt{8c+1}-1}{2}\right)-i\]
+\end{itemize}
+\end{document}
