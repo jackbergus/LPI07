@@ -48,7 +48,7 @@ Per fare questo, possiamo usare la funzione di dovetailing definita come segue:
 
 Quindi, vogliamo assicurarci che il numero risultante sia associato in modo univoco a $ (i, j) $. Allora, possiamo chiederci se c'è una funzione inversa. Tale funzione inversa è:
 
-\[i = c - \frac{1}{2}\left(\frac{\sqrt{8c+1}-1}{2} + 1\right) \cdot\left(\frac{\sqrt{8c+1}-1}{2}\right)\]
-\[j = \left(\frac{\sqrt{8c+1}-1}{2}\right)-i\]
+\[j = c - \frac{1}{2}\left(\left\lfloor\frac{\sqrt{8c+1}-1}{2}\right\rfloor + 1\right) \cdot\left(\left\lfloor\frac{\sqrt{8c+1}-1}{2}\right\rfloor\right)\]
+\[i = \left(\left\lfloor\frac{\sqrt{8c+1}-1}{2}\right\rfloor\right)-j\]
 \end{itemize}
 \end{document}

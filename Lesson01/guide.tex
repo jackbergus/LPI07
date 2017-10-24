@@ -45,7 +45,7 @@ In order to do that, we can use the dovetailing function:
 \[c = \frac{(i+j)(i+j+1)}{2} + j\]
 
 Then, we want to make sure that the resulting number is uniquely associated to $(i,j)$. Then, we can ask ourselves if there is an inverse function. Such inverse function is:
-\[i = c - \frac{1}{2}\left(\frac{\sqrt{8c+1}-1}{2} + 1\right) \cdot\left(\frac{\sqrt{8c+1}-1}{2}\right)\]
-\[j = \left(\frac{\sqrt{8c+1}-1}{2}\right)-i\]
+\[j = c - \frac{1}{2}\left(\left\lfloor\frac{\sqrt{8c+1}-1}{2}\right\rfloor + 1\right) \cdot\left(\left\lfloor\frac{\sqrt{8c+1}-1}{2}\right\rfloor\right)\]
+\[i = \left(\left\lfloor\frac{\sqrt{8c+1}-1}{2}\right\rfloor\right)-j\]
 \end{itemize}
 \end{document}
