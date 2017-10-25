@@ -2,6 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath}
+\usepackage{xcolor}
 \title{Lab Lesson 01}
 \date{October 24, 2017}
 \author{Giacomo Bergami}
@@ -9,7 +10,7 @@
 \maketitle
 \section*{Exercises}
 
-\begin{itemize}
+\begin{enumerate}
 \item Scrivere due programmi, sia per byte che per integer, che sono interessati dall'overflow\footnote{da Wikipedia.it: ``\textit{Un overflow aritmetico è un problema relativo alle operazioni sui numeri all'interno di un computer. Il problema è dovuto al fatto che il computer non è in grado di memorizzare qualsiasi tipo di numero, o meglio, non è in grado di memorizzare un qualsiasi numero di cifre, ma solo tante quante sono i bit a disposizione nella memoria per quel tipo di dato. Ogni bit può assumere due soli valori, 1 e 0; se abbiamo a disposizione n bit (per esempio 4), possiamo memorizzare un numero massimo pari a $(2^n)-1$ (nell'esempio 1111, ovvero 15 nel sistema decimale). Se cercassimo di modificare questo numero aggiungendo 1 il numero diventerebbe 10000(16 in decimale), ma la macchina può memorizzare solo 4 bit, quindi memorizzerebbe il numero 0000 il che non corrisponde a quanto avremmo voluto. L'overflow di solito viene raggiunto quando vengono sommati 2 numeri estremamente grandi entrambi positivi e il computer ci riporta un risultato negativo (cosa impossibile!). Ugualmente nel caso stessimo lavorando con una somma di 2 numeri negativi, quindi estremamente piccoli, e il risultato fosse un numero positivo ( in questo caso viene chiamato underflow). Il bit in più che viene "buttato" dalla macchina spesso rappresenta il segno del numero (1 nel caso sia negativo) quindi nel trabocco il numero perde il segno diventando positivo quando magari ci si aspettava un negativo (o viceversa)}''.}.
 
 \item Scrivere un programma che stampa i secondi in un formato leggibile. Questo significa che ogni secondo deve mostrare il numero di anni, giorni, ore, minuti e secondi. Deve essere utilizzato il seguente formato di output:
@@ -18,9 +19,9 @@
 \end{center}
 \item Un anno con 366 giorni si dice che sia un anno bisestile. Dopo l'adozione del calendario gregoriano (1582), al fine di determinare se un anno è bisestile, è possibile attenersi alla seguente procedura:
 \begin{enumerate}
-\item Se l'anno è divisibile per quattro, vedi 2) e 5) altrimenti
-\item Se l'anno è divisibile per cento, vedi 3) e 4) altrimenti
-\item Se l'anno è divisibile per quattrocento, vedi 4) e 5) altrimenti
+\item Se l'anno è divisibile per quattro, vedi b) e e) altrimenti
+\item Se l'anno è divisibile per cento, vedi c) e d) altrimenti
+\item Se l'anno è divisibile per quattrocento, vedi d) e e) altrimenti
 \item restituisci \textbf{true}
 \item restituisci \textbf{false}
 \end{enumerate}
@@ -50,5 +51,32 @@ Quindi, vogliamo assicurarci che il numero risultante sia associato in modo univ
 
 \[j = c - \frac{1}{2}\left(\left\lfloor\frac{\sqrt{8c+1}-1}{2}\right\rfloor + 1\right) \cdot\left(\left\lfloor\frac{\sqrt{8c+1}-1}{2}\right\rfloor\right)\]
 \[i = \left(\left\lfloor\frac{\sqrt{8c+1}-1}{2}\right\rfloor\right)-j\]
+
+\color{red}
+\item Provare ad eseguire di nuovo gli esercizi 2 e 3  utilizzando questa volta i costrutti condizionali.
+\item Scrivere un programma che, leggendo due double da terminale separati da spazio, stampa a quale quadrante appartengono i due numeri.
+Ricordiamo brevemente che:
+\begin{itemize}
+	\item Appartengono al primo quadrante se sono entrambi positivi.
+	\item Appartengono al secondo quadrante se solo il primo è negativo.
+	\item Appartengono al terzo quadrante se entrambi sono negativi.
+	\item Appartengono al quarto quadrante se solo il secondo è negativo.
 \end{itemize}
+\item Creare un programma che legge quattro coppie da terminale. Ciascuna di queste coppie, rappresenterà una coordinata $(x,y)$ nel piano rappresentante un quadrilatero. Ricordarsi le seguenti regole:
+\begin{itemize}
+	\item La formula della distanza tra due punti è $\overline{AB}=\sqrt{(y_B-y_A)^2+(x_B-x_A)^2}$.
+	\item La formula per vedere la pendenza della retta passante per due punti è $m_{AB}=\frac{y_B-y_A}{x_B-x_A}$
+	\item La formula per ottenere l'ampiezza dell'angolo $\stackrel{\bigtriangleup}{ABC}$ è $\arccos\left(\frac{\overline{AB}^2+\overline{BC}^2-\overline{CA}^2}{2\cdot \overline{AB}\cdot \overline{BC}}\right)$. \textbf{Nota:} il risultato di \texttt{Math.acos} tuttavia è in radianti. Utilizzare \texttt{Math.toDegrees} per la conversione in gradi.
+\end{itemize}
+Inoltre:
+\begin{itemize}
+	\item Un quadrilatero con soli due lati opposti paralleli è un trapezoide.
+	\item Un quadrilatero con i lati opposti paralleli, perpendicolari a due a due e di stessa lunghezza è un quadrato.
+	\item Un quadrilatero con i lati opposti paralleli, perpendicolari a due a due e con i lati paralleli di uguale lunghezza è un rettangolo.
+	\item Un quadrilatero con i lati opposti paralleli e tutti i lati lunghi uguali ma che non rientra nei casi precedenti è un rombo, altrimenti se ha i lati opposti e paralleli lunghi uguali è un parallelogramma.
+	\item Altrimenti è un parallelogramma.
+\end{itemize}
+
+
+\end{enumerate}
 \end{document}

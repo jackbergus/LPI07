@@ -1,6 +1,7 @@
 \documentclass[]{scrartcl}
 %opening
 \usepackage{amsmath}
+\usepackage{xcolor}
 \title{Lab Lesson 01}
 \date{October 24, 2017}
 \author{Giacomo Bergami}
@@ -8,7 +9,7 @@
 \maketitle
 \section*{Exercises}
 
-\begin{itemize}
+\begin{enumerate}
 \item Write two programs, for both bytes and integers, that are affected by a overflow representation.
 \item Write a program that prints the seconds into a human readable format. This means that each second must show the number of years, days, hours, minutes and seconds it corresponds. The following output format must be used:
 \begin{center}
@@ -16,9 +17,9 @@
 \end{center}
 \item A year with 366 days is said to be a leap. Following the adoption of the Gregorian calendar (1582), in order to determine if a year is a leap, you can follow these steps:
 \begin{enumerate}
-\item If the year can be divided by four, see 2) and 5) otherwise
-\item If the year can be divided by one hundred, see 3) and 4) otherwise
-\item If the year can be divided by four hundred, see 4) and 5) otherwise
+\item If the year can be divided by four, see b) and e) otherwise
+\item If the year can be divided by one hundred, see c) and d) otherwise
+\item If the year can be divided by four hundred, see d) and e) otherwise
 \item return \textbf{true}
 \item return \textbf{false}
 \end{enumerate}
@@ -47,5 +48,31 @@ In order to do that, we can use the dovetailing function:
 Then, we want to make sure that the resulting number is uniquely associated to $(i,j)$. Then, we can ask ourselves if there is an inverse function. Such inverse function is:
 \[j = c - \frac{1}{2}\left(\left\lfloor\frac{\sqrt{8c+1}-1}{2}\right\rfloor + 1\right) \cdot\left(\left\lfloor\frac{\sqrt{8c+1}-1}{2}\right\rfloor\right)\]
 \[i = \left(\left\lfloor\frac{\sqrt{8c+1}-1}{2}\right\rfloor\right)-j\]
+
+\color{red}
+\item Repeat exercises 2 and 3 using the \texttt{if..then..else} construct.
+\item Write a program that, reading two doubles from terminal separated by space, print to which quadrant the two numbers belong.
+Recall briefly that: 
+\begin{itemize} 
+	\item If both its coordinates are positive, it stays in the first quadrant.
+	\item If only the first coordinate ($x$) is negative, it stays in the second quadrant.
+	\item If both coordinates are negative, it stays in the third quadrant.
+	\item If only the second coordinate ($y$) is negative, it stays in the fourth quadrant.
 \end{itemize}
+
+\item Create a program that reads four pairs of doubles from terminal. Each of these pairs will represent a $(x, y)$ coordinate in the plan representing a quadrilateral. Remember the following rules:
+\begin{itemize}
+	\item The distance between two points $A$ and $B$ is $\overline{AB}=\sqrt{(y_B-y_A)^2+(x_B-x_A)^2}$.
+	\item The slope between two points $A$ and $B$ is $m_{AB}=\frac{y_B-y_A}{x_B-x_A}$
+	\item The size of the angle $\stackrel{\bigtriangleup}{ABC}$ where $B$ is fixed is $\arccos\left(\frac{\overline{AB}^2+\overline{BC}^2-\overline{CA}^2}{2\cdot \overline{AB}\cdot \overline{BC}}\right)$. \textbf{Please Node:} the result of \texttt{Math.acos} is expressed in \texttt{rad}. If you want to use the degrees you must use \texttt{Math.toDegrees}.
+\end{itemize}
+Also remember that:
+\begin{itemize}
+\item A quadrilateral with only two parallel opposite sides is a trapezoid.
+\item A quadrilateral with parallel opposite sides, perpendicular two by two and of same length is a square.
+\item A quadrilateral with parallel opposite sides, perpendicular two by two and having parallel sides of equal length is a rectangle.
+\item A quadrilateral with parallel opposite sides and all the sides with the same length and does not fit in the previous cases is a rhombus, otherwise if it has the opposite parallel sides of the same length, it is a parallelogram.
+\item Otherwise is a parallelogram.
+\end{itemize}
+\end{enumerate}
 \end{document}
