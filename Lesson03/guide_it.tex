@@ -1,0 +1,34 @@
+\documentclass[]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\title{Lezione di Laboratorio 03}
+\date{21 Novembre, 2017}
+\author{Giacomo Bergami}
+\begin{document}
+\maketitle
+\section*{Exercises}
+
+\begin{enumerate}
+\item  Leggere da terminale una stringa di double arbitraria separata da uno spazio, e valutare il valore massimo.
+\item Creare un programma che legge una matrice da terminale.
+Chiedere prima all'utente il numero di righe e colonne, leggere la matrice per righe e controllare che il numero di celle inserite corrisponda con il numero di colonne.
+Stampare la matrice letta da terminale
+
+Utilizzare \texttt{System.out.printf("\%nd", i);} per stampare interi composti da massimo n cifre
+\item Modifica l'esercizio precedente per sommare due matrici
+\item  Modifica l'esercizio precedente per moltiplicare due matrici
+\item Crea un quadrato magico usando il metodo Siamese per matrici di dimensioni dispari N, riempiendolo con numeri da 1 a $N^2$.
+ Riempi la matrice a partire dalla cella centrale della prima riga con il numero 1,
+ poi per riempire le scatole muoversi diagonalmente in alto e a destra ($ \nearrow$), un passo alla volta. Quando una mossa
+ uscirebbe dal quadrato, ritorna all'ultima riga o alla prima colonna. Riempi ogni cella con un
+ numero crescente. Se si incontra una cella piena, ci si sposta verticalmente in basso di una casella ($\downarrow$), quindi continua
+ come prima.
+
+ Alla fine, fai un po' di debug, e controlla se la matrice ottenuta è un quadrato magico, ogni riga e ogni diagonale
+ devono avere lo stesso valore di somma.
+
+
+\end{enumerate}
+\end{document}

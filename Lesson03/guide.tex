@@ -1,0 +1,31 @@
+\documentclass[]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\title{Lab Lesson 03}
+\date{November 21, 2017}
+\author{Giacomo Bergami}
+\begin{document}
+\maketitle
+\section*{Exercises}
+\begin{enumerate}
+\item Read from console an arbitrary space separated string of doubles, and return the maximum value.
+\item Create a program that reads a matrix from console.
+Ask the user the matrix's number of rows and columns first, read the matrix by row, and then check that the number of imputed cells per row matches with the number of columns.
+Print the matrix
+
+Use \texttt{System.out.printf("\%nd", i);} in order to print the integers formed by at most n digits
+\item Edit the previous exercise to sum two matrices
+\item Edit the previous exercise to perform the matrix multiplication
+\item Create a magic square using the Siamese method for matrices of odd size N , filling it with numbers from 1 to $N^2$.
+Full the matrix starting from the central cell of the first row with the number 1,
+then always move for filling the boxes is diagonally up and right ($\nearrow$), one step at a time. When a move
+ would leave the square, it is wrapped around to the last row or first column, respectively. Fill each cell with an
+ increasing number. If a filled box is encountered, one moves vertically down one box ($\downarrow$) instead, then continuing
+ as before.
+
+ At the end, do some debugging, and check if the obtained matrix is a magic square, that each each row and diagonal
+ have the same sum value.
+\end{enumerate}
+\end{document}
