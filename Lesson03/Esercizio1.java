@@ -9,7 +9,7 @@ public class Esercizio1 {
         Scanner scan = new Scanner(System.in);
         while (scan.hasNext()) {
             Double db = Double.MIN_VALUE;
-            String arrayNumbers[] = scan.nextLine().trim().split("\\s");
+            String arrayNumbers[] = scan.nextLine().trim().split(" ");
             for (int i = 0; i<arrayNumbers.length; i++) {
                 db = Math.max(db, Double.valueOf(arrayNumbers[i]));
             }

@@ -38,14 +38,11 @@ public class Esercizio3 {
             }
             for (int j = 0; j<cols; j++) {
                 matrixRight[i][j] = Integer.valueOf(arrayNumbers[j]);
-                positions = Math.max(Math.log10(matrixLeft[i][j]+matrixRight[i][j]), positions);
+                positions = Math.max(Math.log10(matrixLeft[i][j]+matrixRight[i][j])+1, positions);
             }
         }
         if (!error) {
             int truncated = (int)positions;
-            if (((double)truncated) != positions) {
-                truncated++;
-            }
             String format = " %"+truncated+"d ";
             for (int i = 0; i<row; i++) {
                 System.out.print("|");

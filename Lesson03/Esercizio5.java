@@ -41,7 +41,17 @@ public class Esercizio5 {
                 if (k == 1) {
                     matrix[i][j] = k;
                 } else {
-                    int nexti = i == 0 ? size-1 : i-1;
+
+                    //int nexti = i == 0 ? size-1 : i-1;
+                    int nexti = (i == 0 ? size : i);
+                    nexti--;
+                    //int nexti;
+                    // if (i == 0) {
+                    //   i = size-1;
+                    // } else {
+                    //   i--;
+                    // }h
+
                     int nextj = j == size-1 ? 0 : j+1;
                     if (matrix[nexti][nextj] != 0) {
                         i = i == size ? size-1 : i+1;
@@ -53,10 +63,7 @@ public class Esercizio5 {
                 }
             }
 
-            int truncated = (int)Math.log10(size*size);
-            if (((double)truncated) != Math.log10(size*size)) {
-                truncated++;
-            }
+            int truncated = (int)Math.log10(size*size)+1;
             String format = " %"+truncated+"d ";
             for (int ic = 0; ic<size; ic++) {
                 System.out.print("|");

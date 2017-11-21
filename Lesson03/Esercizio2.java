@@ -32,14 +32,11 @@ public class Esercizio2 {
             }
             for (int j = 0; j<cols; j++) {
                 matrix[i][j] = Integer.valueOf(arrayNumbers[j]);
-                positions = Math.max(Math.log10(matrix[i][j]), positions);
+                positions = Math.max(Math.log10(matrix[i][j])+1, positions);
             }
         }
         if (!error) {
             int truncated = (int)positions;
-            if (((double)truncated) != positions) {
-                truncated++;
-            }
             String format = " %"+truncated+"d ";
             for (int i = 0; i<row; i++) {
                 System.out.print("|");

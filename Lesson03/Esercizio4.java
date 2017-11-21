@@ -59,13 +59,10 @@ public class Esercizio4 {
                         for (int k = 0; k<colsLeft; k++) {
                             matrixResult[i][j] += matrixLeft[i][k] * matrixRight[k][j];
                         }
-                        positions = Math.max(Math.log10(matrixResult[i][j]), positions);
+                        positions = Math.max(Math.log10(matrixResult[i][j])+1, positions);
                     }
                 }
                 int truncated = (int)positions;
-                if (((double)truncated) != positions) {
-                    truncated++;
-                }
                 String format = " %"+truncated+"d ";
                 for (int i = 0; i<rowLeft; i++) {
                     System.out.print("|");
