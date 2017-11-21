@@ -54,7 +54,7 @@ public class Esercizio5 {
 
                     int nextj = j == size-1 ? 0 : j+1;
                     if (matrix[nexti][nextj] != 0) {
-                        i = i == size ? size-1 : i+1;
+                        i = i == size-1 ? 0 : i+1;
                     } else {
                         i = nexti;
                         j = nextj;
