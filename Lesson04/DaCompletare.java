@@ -1,5 +1,10 @@
 import java.util.Scanner;
 
+
+/**
+ * Creare un programma che, in seguito a dei comandi in input letti dall'utente, effettui alcune operazioni tra vettori,
+ * cosi' come proposto nei metodi static che seguono.
+ */
 public class DaCompletare {
 
     // a. Creare un metodo statico "arrayFromLine" che, non prendendo alcun input, legga da input un array di double da
