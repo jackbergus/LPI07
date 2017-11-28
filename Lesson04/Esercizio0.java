@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Soluzione {
+public class Esercizio0 {
 
     // In Java, ciascun oggetto che viene allocato, definisce un nuovo oggetto che occupa memoria in RAM. Definire lo
     // scanner come un campo della classe Esercizio 0;
