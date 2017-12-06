@@ -194,7 +194,7 @@ public class Ristorante {
                         noPortate = Integer.valueOf(record.substring(0, index));
                     }
                     double prezzo = cercaPrezzo(record.substring(index+1).trim(), piatti, prezzi, dimensione);
-                    count = prezzo * noPortate;
+                    count += (prezzo * noPortate);
                     System.out.print("piatto>");
                 }
                 System.out.println("TOTALE: " + count+"€");
