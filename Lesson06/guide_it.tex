@@ -1,0 +1,66 @@
+\documentclass[]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\title{Lezione di Laboratorio 03}
+\date{21 Novembre, 2017}
+\author{Giacomo Bergami}
+\usepackage{listings}
+\usepackage{hyperref}
+\begin{document}
+\maketitle
+\section*{Exercises}
+
+\begin{enumerate}
+\item        Creare un programma che gioca a testa o croce con l'utente, fiché l'utente scrive "STOP!".
+Gestire liberamente la modalità nel quale il programma chiede di inserire la previsione del giocatore
+
+\textbf{Suggerimenti}:
+\begin{itemize}
+\item Creare un nuovo oggetto di classe Random, che è un generatore di numeri casuale:
+\begin{lstlisting}[language=Java]
+Random dado = new Random();
+\end{lstlisting}
+\item Leggere con attenzione i metodi in \url{https://docs.oracle.com/javase/7/docs/api/java/util/Random.html}
+\item Scegliere di generare valori booleani. Scegliere liberamente quale valore associare al valore testa, e quale
+associare alla croce
+\begin{lstlisting}[language=Java]
+boolean risultato = dado.nomemetodo(...);
+\end{lstlisting}
+\end{itemize}
+
+\item        Modificando il programma precedente, scrivere un programma che chieda all'utente di indovinare un numero intero $N$
+genereato randomicamente da Java, tra $-100$ e $100$. Il programma chiederà di indovinare lo stesso numero finché l'utente non
+avrà fornito $N$: a quel punto il programma terminerà. Se il numero forito dall'utente $X$ è ad una distanza di almeno
+$10$ stampare \texttt{fuoco} , altrimenti se è compreso tra $10$ e $20$ stampare \texttt{fuochino}, altrimenti stampare \texttt{acqua}.
+
+\textbf{Suggerimenti}:
+\begin{itemize}
+\item Per la distanza tra due numeri, usare la funzione valore assoluto \texttt{Math.abs} (\url{https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html})
+\item Osserva il seguente codice:
+\begin{lstlisting}[language=Java]
+Random dado = new Random();
+int choice = dado.nextInt(N);
+\end{lstlisting}
+\texttt{choice} può essere solo un numero tra $0$ ed $N$, $N$ a valori positivi o nulli ($N\geq 0$).
+\end{itemize}
+\item   Scrivere un programma che legge una serie di voti con i loro crediti. Si rispecchi il seguente formato:
+\begin{lstlisting}
+voto1:credito1   voto2:credito2       voto3:credito3 voto4:credito4
+\end{lstlisting}
+Dopo aver fatto ciò, il programma deve valutare la media pesata dei voti, ovvero:
+\[\frac{voto_1\cdot credito_1+voto_2\cdot credito_2+\dots}{credito_1+credito_2+\dots}=\frac{\sum_ivoto_i\cdot credito_i}{\sum_i credito_i}\]
+\textbf{Osserva}: l'utente può anche scrivere un numero variabile di voti e crediti; controllare che i crediti non siano zero o negativi.
+
+\item Stampare tutti i numeri primi compresi tra 2 ed N. Utilizzare il Crivello di Eratostene, che opera come segue:
+\begin{itemize}
+\item Creare un array di booleani tra $2$ ed $N$ (per comodità, tra $0$ ed $N$) inizializzato a true.
+\item Si iteri tra $2$ ed $N$ su un numero $i$: se $i$ è primo, settare nell'array tutti i multipli di $i$ ($i$ escluso) a \texttt{false}.
+\item Stampare i numeri primi, o man mano che vengono prodotti nel ciclo precedente, o tutti alla fine.
+\end{itemize}
+\item Creare un programma che legge una matrice per riga da terminale. Stampare la matrice trasposta, ovvero quello che sostituisce ogni elemento $a_{ij}$ in un $a_{ji}$. Si proceda come gli esercizi precedenti sulle matrici.
+
+\item Creare un programma driver per la gestione di una rubrica telefonica, dove si hanno due metodi statici (\texttt{add} e \texttt{search}) per l'inserimento di nomi e numeri in rubrica, e la ricerca di nomi all'interno della rubrica. La rubrica è costituita da due array: un array dei nomi ed un array dei numeri di telefono. Consentire l'inserimento di massimo 5 nomi in rubrica. Svolgere l'esercizio similarmente all'esercizio del Ristorante visto a lezione.
+\end{enumerate}
+\end{document}
