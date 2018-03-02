@@ -1,0 +1,38 @@
+\documentclass[]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{braket}
+\title{Lab Lesson 07}
+\date{March 6, 2018}
+\author{Giacomo Bergami}
+\begin{document}
+\maketitle
+\section*{Esercizi}
+Per controllare se effettivamente avete svolto bene gli esercizi, questa volta fornisco anche dell'ulteriore codice, che controlla la correttezza delle funzioni da voi implementate. Trovate nei file readme maggiori informazioni su come gestire il codice e la valutazione.
+
+
+\begin{enumerate}
+\item[0.] Scrivere un programma ricorsivo che dica se una stringa è palindroma. \textbf{Suggerimento}:
+\begin{itemize}
+	\item Quando non devo applicare la ricorsione? Che cosa restituisco? (\textit{questi sono detti in gergo \textbf{casi base}}).
+	\item Quanto invece devo applicare la ricorsione? (\textit{questa è detto \textbf{casi induttivo}}) Su quale sottostringa applico la ricorsione? Come combino la valutazione del caso corrente con il risultato della ricorsione?
+\end{itemize}
+\item[1.] Scrivere un programma ricorsivo, che valuti una espressione aritmetica. Questa espressione aritmetica può essere costituita solamente da numeri interi, con o senza segno, e le uniche operazioni aritmetiche previste sono la somma, la sottrazione e la moltiplicazione. \textbf{Suggerimento:}, per risolvere problemi complessi, occorre prima spezzettare i sottoproblemi:
+\begin{itemize}
+	\item Metodo \textbf{signReduction}. Data una stringa \texttt{signExpr} contenente i segni \texttt{+} o \texttt{-}, implementare su di essa la regola dei segni. Restituire \texttt{1} se il segno finale è positivo, e \texttt{-1} altrimenti. {\color{red} Non è richiesta la ricorsione}.
+	\item Metodo \textbf{rightInteger}. Scandire verso destra una stringa \texttt{str} a partire dalla posizione \texttt{start}, e restituire l'indice intero \texttt{pos} che definisce un numero compreso tra \texttt{start} e \texttt{pos}.
+	\item Metodo \textbf{signedNumber}. Dato un numero intero preceduto da una serie di segni algebrici \texttt{+} o \texttt{-}, restituire la rappresentazione intera corretta. {\color{red}Può richiedere l'uso di \textbf{rightInteger}}.
+	\item Effettuare la somma algebrica di un'espressione, contenente numeri con segno e solo somme e sottrazioni. {\color{red}Usare la ricorsione. Quali due metodi già implementati posso usare?}
+	\item Metodo \textbf{checkParentheses}. Data una stringa \texttt{s}, restituisce un oggetto di classe \texttt{PairOfIntegers}. Questo oggetto fornisce una coppia d'interi $\Braket{left,right}$, che indica che la stringa \texttt{s[left]...s[right-1]} è il contenuto di tale parentesi bilanciata. {\color{red} Ricorda come funziona substring in Java. Questa implementazione semplificherà i passaggi successivi.}
+	\item Metodo \textbf{leftInteger}. Scandire verso sinistra una stringa \texttt{str} a partire dalla posizione \texttt{start}, e restituire l'indice intero \texttt{pos} che definisce un numero (comprensivo di segno, solamente negativo) compreso tra \texttt{pos} e \texttt{start}.
+	\item Metodo \textbf{evaluate}. Vi ricordo le regole dell'aritmetica:
+	\begin{itemize}
+		\item Se è un solo numero\dots
+		\item Prima si valutano le sottoespressioni tra parentesi. Per ogni coppia di parentesi bilanciate, procedere ricorsivamente finché non ritroviamo la coppia di parentesi più annidata ({\color{red} Quale metodo già implementato ricorda?}). Sostituire la sottoespressione al valore valutato, e\dots 
+		\item All'interno di ciascuna parentesi (che non ne contiene altre) o in un'espressione senza parentesi, prima effettuare tutti i prodotti e poi effettuare le somme e le sottrazioni rimaste.{\color{red}Quest'ultima parte, quale metodo già implementato ricorda?}
+	\end{itemize}
+\end{itemize}
+\end{enumerate}
+\end{document}

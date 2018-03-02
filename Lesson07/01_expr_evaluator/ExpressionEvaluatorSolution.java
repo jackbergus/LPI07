@@ -22,10 +22,12 @@ public class ExpressionEvaluatorSolution {
     public static int signReduction(String signExpr) {
         boolean positive = true;
         for (int i = 0; i<signExpr.length(); i++) {
+            // One negative sign changes the sign of the whole expression.
             if (signExpr.charAt(i) == '-') {
                 positive = !positive;
             }
         }
+        // Boolean sign to signed integer conversion
         return positive ? 1 : -1;
     }
 
@@ -38,6 +40,8 @@ public class ExpressionEvaluatorSolution {
     public static int rightInteger(String str, int start) {
         int pos = -1;
         char current;
+        // Precondition: the string starts at start without a sign.
+        // The string starts with a digit
         for (int i = start; i<str.length(); i++) {
             current = str.charAt(i);
             if (Character.isDigit(current)) {
@@ -54,20 +58,27 @@ public class ExpressionEvaluatorSolution {
      */
     public static PairOfIntegers signedNumber(String expr) {
         int partialResult = 0;
-        // If the number starts with a plus, then
         int sign = 1;
         int posRight;
+        // If the number starts with a plus, then...
         if (expr.startsWith("+") || expr.startsWith("-")) {
             int pos = 0;
-            String buildSignExpr = "";
+            String buildSignExpr = ""; // Suggestion: this is the naive methodology. The more efficient one is using a StringBuilder...
+
+            // Collect all the signs (until a digit is found)
             while ((expr.charAt(pos) == '+' || expr.charAt(pos) == '-') && (pos < expr.length())) {
                 buildSignExpr += expr.charAt(pos);
                 pos++;
             }
+
+            // Associate a numerical sign to the string of pluses and minuses
             sign = signReduction(buildSignExpr);
+
+            // Get the number at the right of such sign
             posRight = rightInteger(expr, pos);
             partialResult = Integer.valueOf(expr.substring(pos,posRight+1));
         } else {
+            // If there is no sign, then just evaluate the number
             posRight = rightInteger(expr, 0);
             partialResult = Integer.valueOf(expr.substring(0,posRight+1));
         }
@@ -85,6 +96,9 @@ public class ExpressionEvaluatorSolution {
             return 0;
         }
         int partialResult = 0;
+        // The evaluation of an algebraic sum can be defined by getting
+        // recursively the first integer (poi.left), and then evaluating the
+        // string over the rest, starting from poi.right
         PairOfIntegers poi = signedNumber(expr);
         return poi.left+algebraicSumEvalutate(expr.substring(poi.right));
     }
@@ -100,18 +114,28 @@ public class ExpressionEvaluatorSolution {
         PairOfIntegers toreturn = new PairOfIntegers(index+1,-1);
         for(int i = toreturn.left; i < s.length(); i++) {
             char c = s.charAt(i);
+            // If we meet an opened parenthesis
             if(c == '(') {
                 toreturn.left = i;
+                // put the parenthesis as a newelement, and continue
                 return checkParentheses(s, i, c);
             } else if(c == ')') {
+                // If we previosly met no open parenthesis, then the function fails
+                // Please observe: 
+                // 1) Instead of using recursion, we can create an iterative 
+                //    function using a Stack function
+                // 2) Recursive functions are evaluated using Stacks at the JVM
+                //    level (check: what StackOverflow means?) ;D
                 if(newelement == -1) {
                     return null;
                 } else {
+                    // Otherwise, return the match
                     toreturn.right = i;
                     return toreturn;
                 }
             }
         }
+        // If we had no match and the right parameter was always -1, then fail
         return toreturn.right == -1 ? null : toreturn;
     }
 
@@ -128,6 +152,11 @@ public class ExpressionEvaluatorSolution {
     public static int leftInteger(String str, int start) {
         int pos = -1;
         char current;
+        // precondition: the string at start contains a digit and, while 
+        //               traversing str backwards, we may meet a signed element
+        // precondition: this function will not be used within the evaluation
+        //               of an algebraic sum, therefore, we can only meet a 
+        //               plus or a minus. 
         for (int i = start; i>=0; i--) {
             current = str.charAt(i);
             if (current == '-'||current == '+') {
@@ -156,49 +185,73 @@ public class ExpressionEvaluatorSolution {
      * @return          Evaluated value
      */
     public static int evaluate(String expr) {
+	expr = expr.replaceAll("\\s","");
+
+
         // Checking if the expression contains a balanced parenthesis
-        expr = expr.replaceAll("\\s","");
         if (expr.contains("(") || expr.contains(")")) {
+            // Getting the first balanced parenthesis
             PairOfIntegers leftRight = checkParentheses(expr,-1,-1);
             if (leftRight != null) {
+                // Evaluate the expression within the parentheses first
                 int result = evaluate(expr.substring(leftRight.left, leftRight.right));
+
+                // Replace the parentheses with the evaluated expression
                 String left = leftRight.left != 1 ? expr.substring(0, leftRight.left-1) : "";
                 String right = leftRight.right != expr.length() -1 ? expr.substring(leftRight.right+1) : "";
                 expr = left + " " + result + " " + right;
                 expr = expr.trim();
+
+                // Evaluate recursively the remaining part
                 return evaluate(expr);
             } else {
+                // If the expression contains unbalanced parentheses, return 0
                 return 0;
             }
         } else {
+            // If the string contains no operator
             if (hasStringNoMathOperator(expr))
-                return Integer.valueOf(expr.trim().replaceAll("\\s",""));
+                // ... then, return the simple number
+                return Integer.valueOf(expr);
             else {
-                // Evaluating times and division first
+                // Otherwise, we must always evaluate the "times first".
+                // Given that inductively we always evaluate an expression, in here we won't get any
                 int timesIndex = expr.indexOf('*');
                 if (timesIndex != -1) {
-                    expr = expr.substring(0,timesIndex).trim()+"*"+expr.substring(timesIndex+1).trim();
-                    timesIndex = expr.indexOf('*');
+                    // Position where the left integer starts from
                     int posLeft = leftInteger(expr, timesIndex-1);
+
+                    // Position where the right integer starts from. Such integer may start with a negated sign
                     int posRight ;
-                    int rightSign;
                     if (expr.charAt(timesIndex+1) == '-') {
-                        rightSign = -1;
                         posRight = rightInteger(expr, timesIndex+2);
                     } else {
-                        rightSign = 1;
                         posRight = rightInteger(expr, timesIndex+1);
                     }
+
+                    // If there is a match for both left and right parentheses
                     if (posLeft != -1 && posRight != -1) {
+                        // Left number
                         String leftExpr = expr.substring(posLeft,timesIndex);
+
+                        // Right number
                         String rightExpr = posRight == expr.length()-1 ? expr.substring(timesIndex+1) : expr.substring(timesIndex+1,posRight+1);
+
+                        // Compute the evaluation
                         int result =  evaluate(leftExpr)*evaluate(rightExpr);
+
+                        // Expression at the left of the times operation
                         String left = expr.substring(0, posLeft);
+
+                        // Expression at the right of the times operation
                         String right = posRight != expr.length() -1 ? expr.substring(posRight+1) : "";
+
+                        // Evaluate the remaining part of the expression
                         expr = left + " " + result + " " + right;
                         return evaluate(expr);
                     }
                 } else {
+                    // If the expression does not contain a * operator, then evaluate the algebraic sum
                     return algebraicSumEvalutate(expr);
                 }
             }
