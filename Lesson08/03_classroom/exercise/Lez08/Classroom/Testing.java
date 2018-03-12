@@ -56,7 +56,13 @@ public class Testing {
         System.out.println(!qualsiasi.votoRegistrato(stu3));
         System.out.println(doc.contaBocciati(qualsiasi.getNome()) == 1);
 
-        System.out.println(doc.mediaVoti("qualsiasi") == 25);
+	doc.verbalizza(stu3, qualsiasi, 19);
+        System.out.println(doc.mediaVoti("qualsiasi") == 23);
+        System.out.println(qualsiasi.votoStudente(stu3) == 19);
+        System.out.println(qualsiasi.promosso(stu3));
+        System.out.println(qualsiasi.votoRegistrato(stu3));
+        System.out.println(doc.contaBocciati(qualsiasi.getNome()) == 0);
+
         System.out.println(!qualsiasi.promosso(stu4));
         System.out.println(!qualsiasi.votoRegistrato(stu4));
 
