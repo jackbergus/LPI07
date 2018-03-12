@@ -1,0 +1,71 @@
+\documentclass[]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{braket}
+\title{Lab Lesson 08}
+\date{March 13, 2018}
+\author{Giacomo Bergami}
+\begin{document}
+\maketitle
+\section*{Esercizi}
+Per controllare se effettivamente avete svolto bene gli esercizi, questa volta fornisco anche dell'ulteriore codice, che controlla la correttezza delle funzioni da voi implementate. Solo nel terzo esercizi non sono presenti file \texttt{.java} pre-editati.
+
+
+\begin{enumerate}
+\item Dato un ArrayList di numeri interi, modificare il metodo \texttt{filter} in modo che aggiorni la lista $ls$, mantenendo tutti quei numeri $x$ al suo interno che sono o minori (\texttt{<}), o maggiori (\texttt{>}), o uguali (\texttt{==}), o diversi (\texttt{!=}), o minori uguali (\texttt{<=}) o maggiori uguali (\texttt{>=}) ad un numero $val$ dato. Utilizzare la ricorsione tail recursive. Gli operatori aritmetici di confronto verranno passati all'argomento \texttt{op}.
+
+	
+\item Dato un ArrayList di numeri interi, modificare i metodi \texttt{summate} e \texttt{product} in modo che rispettivamente forniscano la sommatoria e la produttoria di tutti gli interi all'interno della lista. Definire queste funzioni in modo non ricorsivo, ma in modo che invochino tutte e due una stessa funzione ricorsiva. \textbf{Suggerimento}: guardare alla definizione di tail recursion.
+
+\textit{Curiosità}. Alla fine dell'esercitazione, dare un'occhiata alla soluzione alternativa proposta in \texttt{GenericFold.java} (non richiesto dal programma). Questo codice fornisce una implementazione generica della tail recursion sulle ArrayList, indipendentemente dalla funzione di accumulazione e dai tipi di dati specifici della lista. In questo modo, con un'unica funzione, riesco ad implementare append di stringhe, sommatorie, produttorie, congiunzioni e disgiunzioni.
+
+\item Si vuole modellare un sistema di voti ed insegnamenti per l'anno accademico in corso. Ogni insegnante, che ha nome e cognome, può insegnare alcune materie. Ognuna di queste, identificate da un nome, ha associata una lista di voti. Ogni voto di ogni materia, espresso in trentesimi, è associato ad uno studente. Ogni studente ha un nome e cognome, ed è identificato da un numero di matricola. 
+
+Ogni insegnante può aggiungere una materia a quelle già insegnate, fornendone un nome. Dato uno studente, un voto ed un nome di materia, ogni insegnante può verbalizzare un voto d'esame. L'insegnate vuole inoltre conoscere, data la materia, qual è la media dei voti registrati (ovvero, degli esami registrati con almeno 18) e quanti studenti non hanno passato l'esame. 
+
+Ogni studente può conoscere l'esito dell'esame senza interpellare il docente ma consultando la materia: in particolare, può sapere se il voto è stato verbalizzato; se tale voto è verbalizzato, può conoscere se è stato promosso o bocciato e, se promosso, può sapere il voto che gli è stato registrato, o il voto con cui è stato bocciato.
+
+Tenendo presente che un docente non può verbalizzare due volte un esame per studente e materia, si svolga interamente l'esercizio.
+
+\item Si riscriva l'esercizio del \texttt{Ristorante} spiegato nella lezione suppletiva, in modo da utilizzare \texttt{ArrayList} invece di array estendibili, e definire una classe \texttt{Dish} che consenta di associare immediatamente il nome dei piatti al suo prezzo, senza ricorrere a due \texttt{ArrayList} o due array disgiunti. 
+\begin{itemize}
+	\item La classe \texttt{Dish} dovrà esibire un costruttore \texttt{public Dish(double price, String name)}.
+	\item La classe \texttt{BillItem} esibisce il costruttore \texttt{public BillItem(String dish, int no)}.
+	\item La classe \texttt{Restaurant} dovrà esibire i seguenti metodi:
+	\begin{enumerate}
+		\item \textbf{findPrice}: dato una stringa rappresentante il nome del piatto, restituirne il prezzo associato. Restituire zero qualora il piatto non esista.
+		\item \textbf{addToMenu}: dato un \texttt{Dish d}, aggiorna o inserisce il prezzo associato al nome del piatto.
+		\item \textbf{bill}: data una \texttt{ArrayList} di \texttt{BillItem}, che rappresenta un'associazione tra nome del piatto ed il numero di piatti serviti, valutare il prezzo finale del conto.
+	\end{enumerate}
+\end{itemize}
+Completare le classi \texttt{Dish}, \texttt{BillItem} e \texttt{Restaurant} parzialmente fornite, creando gli opportuni Getter e Setter. Usare \texttt{TopChefJava} per valutare il risultato finale.
+
+\textbf{Osserva.} Per facilitare il processo di compilazione, sono forniti i seguenti script:
+\begin{itemize}
+	\item \texttt{compile\_all.sh}: compila tutti i file java nell'ordine richiesto. Funzionerà solamente quando tutti i metodi di \texttt{BillItem} e \texttt{Dish} verranno dichiarati.
+	\item \texttt{clean.sh}: rimuove tutti i file class.
+	\item \texttt{driver.sh}: esegue il driver che utilizza le classi implementate.
+	\item \texttt{test.sh}: esegue il test per verificare la correttezza del codice.
+\end{itemize}
+
+\item Si vuole creare una struttura dati detta \textit{Albero Binario Di Ricerca}, senza utilizzare ereditarietà o polimorfismo. Un albero binario di ricerca possiede un valore $r$; tale albero può contenere due rami, detti (sotto)albero sinistro e (sotto)albero destro. Se un albero binario di ricerca non ha nessun sottoalbero, allora tale albero si dice \textit{foglia}. Tutti valori presenti nel sottoalbero sinistro devono essere strettamente minori di $r$, così come i sottoalberi destri sono strettamente maggiori di $r$.
+
+\begin{itemize}
+	\item \textbf{setValue}: dato un albero ed un intero, setta il valore all'interno nel nodo radice corrente. Non restituisce alcun valore. \textbf{Osserva:} questa operazione può cambiare il valore settato inizialmente.
+	\item \textbf{addUniqueValue}: dato un albero, inserisce un elemento. Se questo già esiste, incrementare il numero di istanze associate a quel determinato valore.
+	\item \textbf{countNumbers}: conta il numero delle istanze associate a ciascun valore. Non accetta nessun argomento.
+	\item \textbf{sum}: sommo tutti i valori interi presenti nell'albero, e li restituisco. Non accetta argomenti.
+	\item \textbf{isLeaf}: dato un albero, restituisce un valore booleano che mi dice se l'albero è una foglia o meno. Non accetta argomenti.
+	\item \textbf{toString}: serializza un albero come una lista di interi separati da virgola. Ogni elemento ripetuto è rappresentato una volta sola.
+\end{itemize}
+Scrivere una classe \texttt{Albero} che sia eseguibile con il codice di verifica \texttt{Testing}.
+
+	
+
+	
+
+
+\end{enumerate}
+\end{document}
