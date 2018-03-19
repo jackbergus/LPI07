@@ -1,0 +1,84 @@
+\documentclass[]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{braket}
+\usepackage{hyperref}
+\title{Lab Lesson 08}
+\date{March 20, 2018}
+\author{Giacomo Bergami}
+\usepackage{verbatim}
+\begin{document}
+\maketitle
+
+\section*{Esercizio}
+
+%\begin{enumerate}
+Si vuole gestire una community online di valutazione di film. La community è composta da utenti, identificati da un nome utente e provvisti di e-mail. Ogni utente effettua delle valutazioni su di un film, indicandone un nome ed un punteggio compreso tra zero e 10. Ogni film, contraddistinto da un unico nome, ha un genere, una data di rilascio, ed un attore principale. Di ogni attore, contraddistinto univocamente da nome e cognome, si vuole indicarne il sesso. 
+
+Ogni database può essere salvato su disco su un unico file di testo (\texttt{:dump}), e caricato in memoria (\texttt{:load}). Il formato con cui si vuole salvare e caricare il database in memoria è il seguente:
+
+\begin{verbatim}
+actor(Natalie,Portman,female)
+movie(Free Zone,09/06/2005,Drama,Natalie Portman)
+user(giangiotto23,giangiotto@studio.unibo.it)
+score(giangiotto23,Free Zone,6)
+\end{verbatim}
+
+Ogni riga corrisponde ad un oggetto di una classe corrispondente al nome dell'entità (es. \texttt{actor}, \texttt{movie}, \dots). In particolare, il programma princiale è una classe \texttt{Lez09.imdb.simple.Driver} che attende che l'utente fornisca i seguenti comandi:
+\begin{itemize}
+\item \texttt{:quit}
+
+esce dal programma driver.	
+	
+\item \texttt{:load} \textit{nome.file}
+
+carica il database in memoria nel formato dato precedentemente.
+
+
+
+\item \texttt{:dump} \textit{nome.file}
+
+salva il database nel modo specificato.
+
+\item \texttt{:add} \textit{classe(argomento$_1$,\dots,argomento$_n$)}
+
+Se non esiste, crea un nuovo oggetto di tipo \textit{classe} fornendo gli argomenti sopracitati al costruttore.
+
+\item \texttt{?mostProlificActor}
+
+Stampa in una nuova linea il nome di un attore/un'attrice che ha recitato in un numero di film maggiore (o uguale) ai suoi colleghi.
+
+
+\item \texttt{?noMoviesForGenre} \textit{genere}
+
+Stampa in una nuova linea il numero di film che sono stati rilasciati di un determinato \textit{genere}.
+
+\item \texttt{?genreWithHighestAverage}
+
+Dopo aver calcolato la media di tutte le valutazioni di film raggruppandole per genere, restituisce uno dei generi con media massima.
+\end{itemize}
+
+Per lo svolgimento dell'esercizio, si considera una soluzione ammissibile la rappresentazione del campo di ogni classe come una stringa.
+
+\section*{Auto-Valutazione}
+
+Questo esercizio effettua il testing prendendo come input i files forniti nella cartella \textit{tests}. In ogni cartella esiste un file di risposte attese \textit{answer.txt}, un file \textit{query.txt} di comandi da fornire al drive, e un file \textit{db.txt} contentente il risultato finale atteso dell dump del database. In questo modo, posso fare in modo che alcuni field della classe siano oggetti effettivamente corrispondenti all'entità. L'oggetto \texttt{Lez09.imdb.simple.test.TestCorrectIMDB} utilizza automaticamente questi files e la classe driver, controllando che i risultati stampati e salvati su disco corrispondanto a quelli attesi.
+
+\section*{Curiosità}
+
+\begin{enumerate}
+\item Si consiglia il libro ``How To Design Classes'' di  Felleisen per la progettazione orientata agli oggetti. Questo libro è liberamente disponibile in \url{http://www.ccs.neu.edu/home/matthias/HtDC/htdc.pdf}. 
+
+\item Il package \texttt{Lez09.imdb.data\_generator} contiene il codice per mezzo del quale sono stati generati i files di test. 
+
+\item Il package \texttt{Lez09.imdb.better} contiene una soluzione completa ma più complicata, dove la creazione degli oggetti viene posticipata finché tutte le informazioni necessarie non vengono lette dal file del database. Questa soluzione  non è richiesta ai fini dell'esercitazione, ma viene fornita come esempio di studio. La soluzione proposta utilizza un ``design pattern'' definito come \textit{observer}: \url{https://it.wikipedia.org/wiki/Observer_pattern}.
+
+Per velocizzare il caricamento degli oggetti da file e per una pratica di buona programmazione, vengono utilizzate le \texttt{HashMap} invece degli \texttt{ArrayList}.
+
+\item Le ultime versioni di Java tendono ad eliminare la gestione delle eccezioni per i casi di errore, e tendono di più ad una programmazione ``state driven''. Si fornisce un esempio avanzato per la gestione dei file in \url{https://github.com/jackbergus/LucenePdfIndexer}. 
+\end{enumerate}
+
+
+\end{document}

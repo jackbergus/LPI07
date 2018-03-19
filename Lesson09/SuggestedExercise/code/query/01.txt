@@ -1,0 +1,2 @@
+load table/group.txt
+count

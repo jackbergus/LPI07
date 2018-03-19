@@ -1,0 +1,3 @@
+lOaD table/test2.txt
+GROUP B by A wiTH + as K
+Print
