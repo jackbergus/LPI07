@@ -1,0 +1,6 @@
+lOaD table/test.txt
+project A,C
+cOUNT
+PRiNT
+group C by C with * AS d
+PRINT

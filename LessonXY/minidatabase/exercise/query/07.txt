@@ -1,0 +1,6 @@
+lOaD table/test2.txt
+GROUP C by K wiTH + as Z
+Print
+lOaD table/test2.txt
+GROUP C by B wiTH + as B
+print

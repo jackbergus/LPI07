@@ -1,0 +1,7 @@
+lOaD table/test2.txt
+filter B != 5
+filter A < 80
+group C by A with + as d
+filter ZL < 23
+group A by d with + as E
+Print

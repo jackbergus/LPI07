@@ -1,0 +1,69 @@
+\documentclass[]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{braket}
+\usepackage{hyperref}
+\title{Lab Lesson 10}
+\date{March 27, 2018}
+\author{Giacomo Bergami}
+\usepackage{verbatim}
+\begin{document}
+\maketitle
+
+\section*{Esercizio 0}
+Qualora l'esercizio lo richieda, fornire un file di lettura d'esempio. Commentare l'inizio dei file Java come segue:
+\begin{verbatim}
+/**********************************
+* Nome: Paolo
+* Cognome: Rossi
+* Num Matricola: 12345678
+* email: paolo.rossi8@unibo.it
+**********************************/
+\end{verbatim}
+
+
+\section*{Esercizio 1}
+Scrivere un programma \texttt{Esercizio1} che richieda all'utente di fornire tramite terminale una matrice di interi $M$ di dimensione arbitraria $m\times n$ (metodo di immissione della matrice a piacere). Di questa matrice:
+\begin{itemize}
+\item Stampare per righe la matrice trasposta $M^t$, tale che $M^t[i][j] = M[j][i]$
+\item Stampare la somma per colonne.
+\item \textbf{Facoltativo.} Stampare la colonna che ha somma minore.
+\end{itemize}
+
+\section*{Esercizio 2}
+
+La funzione di \textbf{Ackermann a due argomenti} accetta due parametri \textbf{solo} positivi \texttt{long}, $m$ ed $n$, ed è definita come segue:
+\[A(m,n)=\begin{cases}
+n+1 & \textup{se}\;m=0\\
+A(m-1,1) & \textup{se}\;m>0\;\textup{e}\;n=0\\
+A(m-1,A(m,n-1)) & \textup{altrimenti}\\
+\end{cases}\]
+Definire una funzione \texttt{ackermann} che lanci una \texttt{InvalidParameterException} quando uno dei due parametri è negativo, ed un \texttt{main} che esegua tale funzione dopo aver letto $m$ ed $n$ da terminale. 
+\medskip
+
+\begin{enumerate}
+\item Aggiungere la seguente import nel codice: 
+\begin{verbatim}
+import java.security.InvalidParameterException;
+\end{verbatim}
+\item Il costruttore di \texttt{InvalidParameterException} può non accettare parametri.
+\item La funzione di Ackermann  effettua tante chiamate ricorsive. Eseguirla sempre con $m\leq 3$ e $n\leq 12$.
+\end{enumerate}
+
+\section*{Esercizio 3}
+Il programma \texttt{GrepFilter} chiede all'utente una parola \texttt{p} (non contenente spazi) ed un file \texttt{testo.txt} da leggere. Dopo aver fatto ciò,  \texttt{GrepFilter} stampa a video solamente quelle linee del file che contengono la parola precedentemente indicata (\texttt{p}).
+
+\textbf{Facoltativo}. Prima di uscire, il programma dovrà creare un file che contiene solamente le linee precedentemente visualizzate di \texttt{testo.txt}. Il nome del file da salvare dovrà essere digitato dall'utente da terminale, previa richiesta del programma.
+
+\section*{Esercizio 4}
+Una musicoteca contiene una collezione di CD. Ogni CD ha un genere, un autore, un titolo, una casa discografica, un codice identificativo ed un elenco di brani. Ogni brano ha un titolo, un numero di traccia ed ha una durata in secondi. Ogni casa discografica ha un nome e rilascia una serie di CD.
+
+\textbf{Facoltativo}. Scrivere un metodo che restituisca la durata totale di ogni CD.
+
+\textbf{Facoltativo (difficile)}. Creare un metodo che restituisce qual è il genere a cui è associato un maggior numero di dischi di una stessa casa discografica.
+
+\textbf{Il driver ``di collaudo'' non è richiesto.}
+
+\end{document}
