@@ -1,4 +1,0 @@
-lOaD table/test.txt
-fIlTeR A <= 4
-cOUNT
-PRiNT

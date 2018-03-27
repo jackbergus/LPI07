@@ -1,7 +1,0 @@
-lOaD table/test2.txt
-filter B != 5
-filter A < 80
-filter C < 23
-group C by A with + as d
-group A by d with + as E
-Print

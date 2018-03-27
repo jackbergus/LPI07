@@ -1,3 +1,0 @@
-load table/group.txt
-group C by B with + AS C
-print
